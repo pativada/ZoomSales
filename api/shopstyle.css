@@ -1,0 +1,498 @@
+/* ---------------------------------------------------------
+------------------Begin of navigation Bar----------------
+------------------------------------------------------------ */
+/* Base navbar container resetting browser defaults */
+#navbar { 
+    background-color: #1a1a1a; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Flexbox converts list layout and wipes native bullet spacing */
+#navbar ul {
+    display: flex;
+    justify-content: center; /* Centers items horizontally. Use flex-start for left align */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Individual list item separation */
+#navbar ul li { 
+    display: block; 
+}
+
+/* Elegant links using fluid padding instead of forced widths */
+#navbar ul a { 
+    display: block; 
+    padding: 0.8rem 1.5rem;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease; /* Fluid transition animation */
+}
+#navbar ul a:hover
+{
+    text-shadow: 0 0 5px white;
+}
+
+
+
+/* ---------------------------------------------------------
+------------------End of navigation Bar----------------
+------------------------------------------------------------ */
+
+/* Parent container for the products (Add this to your HTML wrapper if missing) */
+.productContainer {
+/*    display: flex;    flex-wrap: wrap; */
+    display: grid ;
+    grid-template-columns: repeat(5, 1fr) ; 
+
+    justify-content: space-between; /* Pushes items to the outer edges */
+    padding: 10px;
+    gap:10px;
+}
+
+.productBox {
+    /* Calculates exactly 20% width minus the total margin space per row */
+    flex: 0 0 calc(20% - 20px); 
+    margin: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box; 
+    transition: box-shadow 0.2s ease, transform 0.2s ease; /* Added transform to the transition */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Single, clear base shadow */
+}
+
+/* Hover effect */
+.productBox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2); /* Slightly darker, larger shadow for visibility */
+}
+
+
+/* Refactored product images for a clean vertical card layout */
+.productBox img {   
+    max-width: 100%; /* Allows image to fill card width gracefully */
+    height: 100px;   /* Forces uniform height across varied image uploads */
+    object-fit: contain; /* Prevents image distortion or squishing */
+    margin-bottom: 15px;
+    display: block;  /* Replaces float for predictable layout flow */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-submit {
+    border: none;
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 0 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    height: 20px;
+
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    color: #333;
+    outline: none;
+    background-color: #fff;
+    margin: 5px;
+    border-radius: 20px;
+     transition: box-shadow 0.2s ease;
+}
+.search-submit:hover, .btn-pagination:hover {
+    text-shadow: 0 0 5px white;
+}       
+.search-input:hover {
+    box-shadow: 0 0 5px black;
+}
+.btn-pagination {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap; /* Forces text to stay on a single horizontal line */
+    gap: 8px;
+    background-color:black;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    height: 20px;
+}
+.search-form {
+    flex: 0 1 400px; /* Does not force width, but caps out beautifully at 400px */
+    width: 100%;
+}
+/* Glues input box and search button together horizontally */
+.search-group {
+    display: flex;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.search-pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    margin: 20px 10px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+p#description {
+    font-size: 0.7rem;
+    color: blue;
+    margin: 10px 0;
+}
+p#price {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: green;
+    margin: 5px 0;
+    text-align: right;
+}
+p#product-id {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ec0a0a;
+    margin: 10px 0;
+
+}
+/*
+body{
+
+  background-image: url("Images/IFU_Assets/ProductPictures/gadget_tree1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  backdrop-filter: grayscale(100%); 
+}
+*/
+
+body{
+    background-color: #a78c8c;
+}
+/* ---------------------------------------------------------
+------------------Begin of Slider navigation----------------
+------------------------------------------------------------ */
+.slider-wrapper {
+  position: relative;
+  max-width: 500px;
+  max-height: 300px;
+  margin: 0 auto;
+}
+
+.slider {
+  display: flex;
+  aspect-ratio: 16 / 9;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; /* Forces snapping to slides */
+  scroll-behavior: smooth;      /* Smooth sliding animation */
+  box-shadow: 0 1.5rem 3rem -0.75rem rgba(201, 142, 142, 0.3);
+  border-radius: 0.5rem;
+}
+
+.slider img {
+  flex: 1 0 100%;             /* Each image takes 100% width */
+  scroll-snap-align: start;   /* Snap point at the start of the image */
+  object-fit: cover;
+}
+
+/* Hide scrollbar for a cleaner look */
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Styling the navigation dots */
+.slider-nav {
+  display: flex;
+  column-gap: 1rem;
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.slider-nav a {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: #663030;
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+}
+
+.slider-nav a:hover {
+  opacity: 1;
+}
+p#promo-description {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: maroon;
+    margin: 20px 0;
+    text-align: center;
+}
+p#promo-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: maroon;
+    margin: 10px 0;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+div.promo-section {
+    padding: 30px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;        
+}
+
+/* ---------------------------------------------------------
+------------------End of Slider navigation----------------
+------------------------------------------------------------ */
+#newCustomerForm{
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+#userform {
+    display: flex;
+    background-color: black;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 400px;
+    justify-content: center;
+    align-items: center;
+} 
+#userform, 
+#userform td, 
+#userform label {
+    color: white !important;
+}
+#userform input[readonly] {
+    background-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+#LoginForm{
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+div#view-cart-product {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/*---------------------------------------------------------
+----------------------Message Bar--------------------------
+---------------------------------------------------------*/
+/* Pause the movement when a user hovers their mouse over the message */
+/* The main bar background wrapper */
+.announcement-bar-wrapper {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    padding: 10px 0 !important;
+    overflow: hidden !important;
+    position: relative !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.marquee-inner-container {
+    display: flex !important;
+    width: max-content !important;
+    white-space: nowrap !important;
+    animation: forced-marquee 20s linear infinite !important;
+    -webkit-animation: forced-marquee 20s linear infinite !important;
+}
+
+/* Pause on hover */
+.announcement-bar-wrapper:hover .marquee-inner-container {
+    animation-play-state: paused !important;
+    -webkit-animation-play-state: paused !important;
+}
+
+.moving-announcement-text {
+    display: inline-block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+}
+
+@keyframes forced-marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@-webkit-keyframes forced-marquee {
+    0%   { -webkit-transform: translateX(0); }
+    100% { -webkit-transform: translateX(-50%); }
+}
+/*---------------------------------------------------------
+---------------------- END of Message Bar-----------------
+---------------------------------------------------------*/
+/*---------------------------------------------------------
+---------------------- Begin of Dropdown-----------------
+---------------------------------------------------------*/
+/* Container must be relative so dropdown aligns beneath it */
+.search-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Base style for the hidden menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Positions it directly under the nav bar */
+    right: 0;
+    background-color: #ffffff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px;
+    z-index: 1000;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+/* Class added by JavaScript to make it visible */
+.dropdown-content.show {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Optional clean up for layout labels inside the menu */
+.dropdown-content label {
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.dropdown-title {
+    margin: 0;
+    font-weight: bold;
+    color: #555;
+    font-size: 12px;
+}
+.dropdown-submit-btn {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/*
+-------------------------------Password Popover-------------------------------
+*/
+/* Container to manage relative positioning */
+.password-container {
+    position: relative;
+    display: inline-block;
+}
+
+input[type="password"] {
+    width: 100%;
+}
+/* Popover styling */
+.popover {
+    position: absolute;
+    left: 105%; /* Places it to the right of the input */
+    top: 0;
+    width: 250px;
+    padding: 12px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.popover h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.popover ul {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 12px;
+    color: #555;
+}
+
+/* Utility class to hide the popover */
+.hidden {
+    display: none !important;
+}
+
+/* Rule Validation Styles */
+.rule-item {
+    color: #555;
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+.rule-item.valid {
+    color: #2e7d32; /* Green */
+    font-weight: bold;
+}
+
+.rule-item.invalid {
+    color: #c62828; /* Red */
+    font-weight: bold;
+}
+
+.error-text {
+    color: #c62828; /* Red color */
+    font-size: 11px;
+    display: block;
+    margin-top: 4px;
+    font-weight: bold;
+}
